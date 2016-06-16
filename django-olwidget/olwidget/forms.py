@@ -187,7 +187,7 @@ def apply_maps_to_modelform_fields(fields, maps, default_options=None,
         min_pos = 65535 # arbitrarily high number for field ordering
         initial = []
         for field_name in field_list:
-            min_pos = min(min_pos, fields.keyOrder.index(field_name))
+            min_pos = min(min_pos, fields.keys().index(field_name))
             field = fields.pop(field_name)
             initial.append(field_name)
             if not isinstance(field.widget, (Map, BaseVectorLayer)):
