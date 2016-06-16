@@ -7,7 +7,7 @@ from distutils.core import setup
 root = os.path.abspath(os.path.dirname(__file__))
 os.chdir(root)
 
-VERSION = '0.61.2'
+VERSION = '0.61.5'
 
 setup(name='django-olwidget',
     version=VERSION,
