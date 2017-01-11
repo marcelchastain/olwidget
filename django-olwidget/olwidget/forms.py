@@ -18,7 +18,7 @@ def insert_into_ordereddict(od, key, val, min_position=0):
     """
     items = od.items()
     items.insert(min_position, [key, val])
-    return OrderedDict(*items)
+    return OrderedDict(items)
 
 
 def get_declared_fields(bases, attrs, with_base_fields=True):
