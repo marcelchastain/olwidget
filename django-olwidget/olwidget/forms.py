@@ -10,6 +10,17 @@ from olwidget import utils
 
 __all__ = ('MapModelForm', )
 
+
+def insert_into_ordereddict(od, key, val, min_position=0):
+    """
+    Create a new OrderedDict from an existing one, with an item inserted at the 
+    specified position
+    """
+    items = od.items()
+    items.insert(min_position, [key, val])
+    return OrderedDict(*items)
+
+
 def get_declared_fields(bases, attrs, with_base_fields=True):
     """
     Create a list of form field instances from the passed in 'attrs', plus any
@@ -205,7 +216,7 @@ def apply_maps_to_modelform_fields(fields, maps, default_options=None,
             map_field = default_field_class(layer_fields, map_opts, layer_names=names,
                 label=", ".join(forms.forms.pretty_name(f) for f in field_list),
                 template=template)
-        fields.insert(min_pos, map_name, map_field)
+        fields = insert_into_ordereddict(fields, map_name, map_field, min_pos)
         initial_data_keymap[map_name] = initial
     return initial_data_keymap
 
